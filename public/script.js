@@ -5,20 +5,20 @@ $("uploadBtn").addEventListener("click", async () => {
     if (!file) return alert("Vui lòng chọn tệp!");
     const formData = new FormData();
     formData.append("file", file);
-    $("uploadInfo").textContent = "Đang tải...";
+    $("uploadInfo").textContent = "Đang trích xuất...";
     const res = await fetch("/api/upload", { method: "POST", body: formData });
     const j = await res.json();
     if (j.extractedText) $("text").value = j.extractedText;
-    $("uploadInfo").textContent = "Tải xong!";
+    $("uploadInfo").textContent = "Đã tải xong!";
 });
 
 $("generateBtn").addEventListener("click", async () => {
     const textValue = $("text").value.trim();
     const modeValue = $("mode").value;
-    if (!textValue) return alert("Hãy nhập văn bản!");
+    if (!textValue) return alert("Vui lòng nhập nội dung!");
 
     $("generateBtn").disabled = true;
-    $("result").textContent = "Gemini 2.0 Flash đang xử lý...";
+    $("result").textContent = "AI đang xử lý...";
 
     try {
         const res = await fetch("/api/process", {
@@ -36,7 +36,7 @@ $("generateBtn").addEventListener("click", async () => {
         }
     } catch (e) {
         $("generateBtn").disabled = false;
-        $("result").textContent = "Lỗi kết nối Render!";
+        $("result").textContent = "Lỗi Render kết nối!";
     }
 });
 

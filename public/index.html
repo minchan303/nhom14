@@ -2,43 +2,37 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
-  <title>HappyUni – AI Assistant</title>
+  <title>HappyUni AI Chatbot</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <header>
-      <h1 id="appTitle">HappyUni Chatbot</h1>
-      <p class="muted">Công cụ tóm tắt và làm sạch tài liệu với AI</p>
+      <h1>HappyUni AI</h1>
+      <p class="muted">Sắp xếp tài liệu - Trích xuất ý chính với Gemini 2.0 Flash</p>
     </header>
-
     <main>
       <section class="card">
-        <label>Chế độ</label>
+        <label>Lựa chọn xử lý</label>
         <select id="mode">
-          <option value="cleanup">✨ Sắp xếp văn bản sạch (Sẵn sàng in)</option>
-          <option value="highlight">💡 Làm nổi bật ý quan trọng</option>
-          <option value="summary">📝 Tóm tắt bài học</option>
-          <option value="qa">❓ Hỏi đáp kiến thức</option>
+          <option value="cleanup">✨ Sắp xếp sạch (In ấn)</option>
+          <option value="highlight">💡 Highlight ý quan trọng</option>
+          <option value="summary">📝 Tóm tắt ngắn gọn</option>
         </select>
-
-        <textarea id="text" placeholder="Nhập văn bản học tập tại đây..."></textarea>
-
+        <textarea id="text" placeholder="Dán bài học hoặc trích xuất từ file..."></textarea>
         <div class="row">
           <input type="file" id="file" />
-          <button id="uploadBtn">Tải file</button>
+          <button id="uploadBtn">Tải File</button>
         </div>
         <div id="uploadInfo" class="muted"></div>
-
         <div class="row">
-          <button id="generateBtn" class="primary">Bắt đầu xử lý với Gemini</button>
-          <button id="exportPdfBtn" style="display:none">Tải PDF kết quả</button>
+          <button id="generateBtn" class="primary">Xử lý ngay</button>
+          <button id="exportPdfBtn" style="display:none">Tải PDF</button>
         </div>
       </section>
-
       <h2>Kết quả hiển thị</h2>
-      <section id="result" class="result">Dữ liệu xử lý sẽ hiện ở đây.</section>
+      <section id="result" class="result">Chưa có dữ liệu.</section>
     </main>
   </div>
   <script src="script.js"></script>

@@ -29,7 +29,7 @@ if (process.env.GEMINI_API_KEY) {
 async function askGemini(prompt) {
     if (!genAI) return "⚠️ Thiếu GEMINI_API_KEY. Hãy cấu hình biến môi trường trên Render.";
     try {
-        const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
         const result = await model.generateContent(prompt);
         const response = await result.response;
         return response.text();
@@ -90,4 +90,5 @@ app.post("/api/export/pdf", (req, res) => {
 });
 
 app.listen(process.env.PORT || 3000, () => console.log("Server Live!"));
+
 

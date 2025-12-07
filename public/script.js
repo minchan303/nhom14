@@ -1,67 +1,55 @@
 const $ = id => document.getElementById(id);
-const resultEl = $("result");
-const textEl = $("text");
-const exportPdfBtn = $("exportPdfBtn");
 
-// Xử lý upload file
 $("uploadBtn").addEventListener("click", async () => {
-    const fileInput = $("file");
-    if (!fileInput.files[0]) return alert("Hãy chọn file!");
-    
+    const file = $("file").files[0];
+    if (!file) return alert("Vui lòng chọn tệp!");
     const formData = new FormData();
-    formData.append("file", fileInput.files[0]);
-    $("uploadInfo").textContent = "Đang trích xuất dữ liệu...";
-
+    formData.append("file", file);
+    $("uploadInfo").textContent = "Đang tải...";
     const res = await fetch("/api/upload", { method: "POST", body: formData });
-    const data = await res.json();
-    
-    if (data.extractedText) {
-        textEl.value = data.extractedText;
-        $("uploadInfo").textContent = "Đã tải dữ liệu thành công!";
-    }
+    const j = await res.json();
+    if (j.extractedText) $("text").value = j.extractedText;
+    $("uploadInfo").textContent = "Tải xong!";
 });
 
-// Xử lý nút Generate
 $("generateBtn").addEventListener("click", async () => {
-    const content = textEl.value.trim();
-    const selectedMode = $("mode").value;
-
-    if (!content) return alert("Vui lòng nhập hoặc tải tài liệu!");
+    const textValue = $("text").value.trim();
+    const modeValue = $("mode").value;
+    if (!textValue) return alert("Hãy nhập văn bản!");
 
     $("generateBtn").disabled = true;
-    resultEl.textContent = "Hệ thống AI đang xử lý, vui lòng đợi...";
+    $("result").textContent = "Gemini 2.0 Flash đang xử lý...";
 
     try {
-        const response = await fetch("/api/process", {
+        const res = await fetch("/api/process", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ text: content, mode: selectedMode })
+            body: JSON.stringify({ textContent: textValue, mode: modeValue })
         });
-        
-        const data = await response.json();
+        const data = await res.json();
         $("generateBtn").disabled = false;
-
         if (data.success) {
-            resultEl.textContent = data.output;
-            exportPdfBtn.style.display = "inline-block";
+            $("result").textContent = data.output;
+            $("exportPdfBtn").style.display = "inline-block";
         } else {
-            resultEl.textContent = "Lỗi xử lý: " + data.error;
+            $("result").textContent = "Lỗi: " + data.error;
         }
-    } catch (err) {
+    } catch (e) {
         $("generateBtn").disabled = false;
-        resultEl.textContent = "Không thể kết nối với máy chủ.";
+        $("result").textContent = "Lỗi kết nối Render!";
     }
 });
 
-// Xử lý xuất PDF
-exportPdfBtn.addEventListener("click", async () => {
-    const response = await fetch("/api/export/pdf", {
+$("exportPdfBtn").addEventListener("click", async () => {
+    const content = $("result").textContent;
+    const res = await fetch("/api/export/pdf", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title: "Tai lieu sach HappyUni", html: resultEl.textContent })
+        body: JSON.stringify({ title: "Ket qua HappyUni", htmlContent: content })
     });
-    const blob = await response.blob();
-    const url = URL.createObjectURL(blob);
+    const blob = await res.blob();
     const a = document.createElement("a");
-    a.href = url; a.download = "HappyUni-Cleanup.pdf"; a.click();
+    a.href = URL.createObjectURL(blob);
+    a.download = "HappyUni-Result.pdf";
+    a.click();
 });

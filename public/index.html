@@ -3,24 +3,23 @@
 <head>
   <meta charset="utf-8" />
   <title>HappyUni AI Chatbot</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <header>
       <h1>HappyUni AI</h1>
-      <p class="muted">Sắp xếp tài liệu - Trích xuất ý chính với Gemini 2.0 Flash</p>
+      <p class="muted">Hỗ trợ học tập thông minh với Gemini 2.0 Flash</p>
     </header>
     <main>
       <section class="card">
-        <label>Lựa chọn xử lý</label>
+        <label>Chế độ</label>
         <select id="mode">
           <option value="cleanup">✨ Sắp xếp sạch (In ấn)</option>
-          <option value="highlight">💡 Highlight ý quan trọng</option>
-          <option value="summary">📝 Tóm tắt ngắn gọn</option>
+          <option value="highlight">💡 Highlight ý chính</option>
+          <option value="summary">📝 Tóm tắt</option>
         </select>
-        <textarea id="text" placeholder="Dán bài học hoặc trích xuất từ file..."></textarea>
+        <textarea id="text" placeholder="Dán văn bản hoặc trích xuất từ file..."></textarea>
         <div class="row">
           <input type="file" id="file" />
           <button id="uploadBtn">Tải File</button>
@@ -31,8 +30,8 @@
           <button id="exportPdfBtn" style="display:none">Tải PDF</button>
         </div>
       </section>
-      <h2>Kết quả hiển thị</h2>
-      <section id="result" class="result">Chưa có dữ liệu.</section>
+      <h2>Kết quả</h2>
+      <section id="result" class="result">Dữ liệu sẽ hiện ở đây.</section>
     </main>
   </div>
   <script src="script.js"></script>

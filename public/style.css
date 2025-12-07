@@ -1,13 +1,9 @@
-body { background: #f3f7fb; font-family: 'Inter', Arial, sans-serif; margin: 0; padding: 18px; color: #0b1a2b; }
-.container { max-width: 980px; margin: auto; }
-header h1 { margin: 0 0 6px 0; font-size: 32px; color: #0951d9; border-bottom: 2px solid #0951d9; display: inline-block; }
-.muted { color: #6b7280; font-size: 14px; margin-top: 6px; }
-
-.card { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 10px 30px rgba(20,30,80,0.08); margin-bottom: 20px; border: 1px solid #e1e7ef; }
-label { display: block; margin-bottom: 8px; font-weight: 600; color: #334; }
-textarea { width: 100%; min-height: 180px; padding: 12px; border-radius: 8px; border: 1px solid #e1e7ef; font-size: 15px; margin-bottom: 10px; }
+body { background: #f3f7fb; font-family: Inter, Arial, sans-serif; margin: 0; padding: 20px; color: #0b1a2b; }
+.container { max-width: 900px; margin: auto; }
+header h1 { color: #0951d9; font-size: 32px; margin-bottom: 5px; }
+.card { background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.05); border: 1px solid #e1e7ef; margin-bottom: 20px; }
+textarea { width: 100%; min-height: 180px; padding: 15px; border-radius: 10px; border: 1px solid #e1e7ef; font-size: 15px; box-sizing: border-box; }
 .row { display: flex; gap: 10px; margin-top: 15px; align-items: center; }
-button { background: #3b6cff; color: #fff; border: 0; padding: 10px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s; }
-button:hover { opacity: 0.9; transform: translateY(-1px); }
+button { background: #3b6cff; color: #fff; border: 0; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; }
 button.primary { background: #0951d9; }
 .result { background: #fff; padding: 20px; border-radius: 10px; border: 1px solid #e6eefc; min-height: 200px; white-space: pre-wrap; line-height: 1.6; }

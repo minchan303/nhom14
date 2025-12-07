@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
-  <title>HappyUni AI - Trợ lý học tập</title>
+  <title>HappyUni AI Chatbot</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -10,38 +10,30 @@
   <div class="container">
     <header>
       <h1 id="appTitle">HappyUni Chatbot</h1>
-      <p class="muted">Tóm tắt - Làm sạch tài liệu - Hỗ trợ học tập thông minh với Gemini</p>
+      <p class="muted">Xử lý tài liệu thông minh với Gemini AI</p>
     </header>
-
     <main>
       <section class="card">
         <label>Chế độ xử lý</label>
         <select id="mode">
-          <option value="cleanup">✨ Sắp xếp văn bản sạch (Sẵn sàng in)</option>
+          <option value="cleanup">✨ Sắp xếp văn bản sạch</option>
           <option value="highlight">💡 Làm nổi bật ý chính</option>
           <option value="summary">📝 Tóm tắt bài học</option>
-          <option value="flashcards">🗂️ Tạo Flashcards</option>
           <option value="qa">❓ Giải đáp Q&A</option>
-          <option value="learning_sections">📚 Chia mục bài học</option>
         </select>
-
-        <label>Nội dung cần xử lý</label>
-        <textarea id="text" placeholder="Dán văn bản hoặc tài liệu lộn xộn vào đây..."></textarea>
-
+        <textarea id="text" placeholder="Nhập văn bản hoặc dán tài liệu tại đây..."></textarea>
         <div class="row">
           <input type="file" id="file" />
-          <button id="uploadBtn">Tải lên file</button>
+          <button id="uploadBtn">Tải file</button>
         </div>
         <div id="uploadInfo" class="muted"></div>
-
         <div class="row">
           <button id="generateBtn" class="primary">Bắt đầu xử lý với Gemini</button>
-          <button id="exportPdfBtn" style="display:none">Xuất bản PDF sạch</button>
+          <button id="exportPdfBtn" style="display:none">Tải bản PDF sạch</button>
         </div>
       </section>
-
-      <h2>Kết quả hiển thị</h2>
-      <section id="result" class="result">Dữ liệu sau khi AI xử lý sẽ xuất hiện tại đây.</section>
+      <h2>Kết quả</h2>
+      <section id="result" class="result">Kết quả xử lý sẽ hiển thị ở đây.</section>
     </main>
   </div>
   <script src="script.js"></script>

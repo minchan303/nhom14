@@ -2,80 +2,43 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
-  <title>HappyUni – AI Chatbot</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
+  <title>AI Smart Assistant</title>
   <link rel="stylesheet" href="style.css" />
-
-  <!-- pdf.js (render PDF pages to canvas for client OCR) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.min.js"></script>
-  <!-- Tesseract.js (browser) for OCR -->
-  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/dist/tesseract.min.js"></script>
-  <!-- Mermaid for mindmap drawing -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-  <!-- Chart.js for charts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <style>
-    /* small inline safety: ensure worker path is set early */
-  </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1 id="appTitle">HappyUni</h1>
-      <p class="muted">Paste text, upload file (PDF/Word/CSV) hoặc dán URL → chọn chế độ → Generate</p>
+      <h1 id="appTitle">HappyUni Chatbot</h1>
+      <p class="muted">Tóm tắt ý chính - Làm sạch tài liệu - Hỗ trợ học tập thông minh</p>
     </header>
-
     <main>
       <section class="card">
-        <div class="row wrap">
-          <label>Chế độ</label>
-          <select id="mode">
-            <option value="summary">Tóm tắt</option>
-            <option value="flashcards">Flashcards</option>
-            <option value="qa">Q&amp;A</option>
-            <option value="learning_sections">Chia mục học</option>
-            <option value="mindmap_text">Mindmap (text + JSON)</option>
-          </select>
-        </div>
-
-        <label>Nội dung (paste) hoặc upload file / dán URL</label>
-        <textarea id="text" placeholder="Nhập hoặc dán văn bản..."></textarea>
-
+        <label>Chế độ xử lý</label>
+        <select id="mode">
+          <option value="cleanup">✨ Sắp xếp văn bản sạch (Sẵn sàng in)</option>
+          <option value="highlight">💡 Làm nổi bật ý chính</option>
+          <option value="summary">📝 Tóm tắt</option>
+          <option value="qa">❓ Q&A</option>
+          <option value="learning_sections">📚 Chia mục bài học</option>
+        </select>
+        
+        <textarea id="text" placeholder="Dán văn bản hoặc tài liệu lộn xộn vào đây..."></textarea>
+        
         <div class="row">
           <input type="file" id="file" />
-          <button id="uploadBtn">Upload</button>
-          <button id="ocrBtn">OCR (PDF/Ảnh)</button>
+          <button id="uploadBtn">Tải file</button>
         </div>
-        <div id="uploadInfo" class="muted"></div>
-
+        
         <div class="row">
-          <input id="url" placeholder="Dán URL..." style="flex:1" />
-          <button id="fetchBtn">Fetch & Generate</button>
-        </div>
-
-        <div class="row">
-          <button id="generateBtn" class="primary">Generate</button>
-          <button id="exportPdfBtn" style="display:none">Export PDF</button>
-          <button id="exportPngBtn" style="display:none">Export Mindmap PNG</button>
+          <button id="generateBtn" class="primary">Bắt đầu xử lý với Gemini</button>
+          <button id="exportPdfBtn" style="display:none">Tải về bản PDF sạch</button>
         </div>
       </section>
-
-      <h2>Kết quả</h2>
-      <section id="result" class="result">Kết quả sẽ hiển thị ở đây.</section>
+      <h2>Kết quả hiển thị</h2>
+      <section id="result" class="result">Dữ liệu sau khi AI xử lý sẽ xuất hiện tại đây.</section>
     </main>
   </div>
-
-  <script>
-    // set pdf.js worker from CDN (must use HTTPS)
-    if (window.pdfjsLib) {
-      window.pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.worker.min.js";
-    }
-    // init mermaid
-    if (window.mermaid) mermaid.initialize({ startOnLoad: false });
-  </script>
-
   <script src="script.js"></script>
 </body>
 </html>
